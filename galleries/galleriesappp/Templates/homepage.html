@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+
+</head>
+<body>
+<nav class="navbar navbar-expand-sm navbar-light fixed-top"  style="background-color: #9c9c9c;">
+        <a class="navbar-brand" href="#"><b>Galleries</b></a>
+<button class="navbar-toggler" data-toggle="collapse" data-target="#navbarMenu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarMenu">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a href="{% url 'albums' %}" class="nav-link"><b>Galleries</b></a>
+                </li>
+                <li class="nav-item">
+                    <a href="{% url 'actress' %}" class="nav-link"><b>Actress</b></a>
+                </li>
+            </ul>
+        </div>
+
+    </nav>
+        <div id ="arran">
+    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+        {% for slider in carousellist%}
+<img src= "{{slider.image1.url}}" class="d-block w-100"  alt="...">
+{% endfor %}
+
+    </div>
+    <div class="carousel-item">
+              {% for slider in carousellistX%}
+<img src= "{{slider.image2.url}}" class="d-block w-100"  alt="...">
+{% endfor %}
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+    </div>
+<div id="galle">
+    <div class ="heading">
+    <h2 style="text-align:left;float:left; color:#fc6868; font-family:Cambria; margin-top:20px; margin-left:20px;"><b>Albums</b></h2>
+    <a href="{% url 'albums' %}" class="btn btn-danger float-right" role="button" style="margin-top:20px;margin-right:30px;">View All</a>
+    </div>
+        <br>
+    <section class="gallery-block cards-gallery">
+          	<div class="container">
+   		<div class="row">
+            {% for instance in actres_albums|slice:":3" %}
+
+   			<div class="col-md-6 col-lg-4">
+   				<div class="card border-0 transform-on-hover">
+   					<a class="lightbox" href='{{ instance.get_absolute_url }} '><img src= {{ instance.bannerImage.url }} class="card-img-top"></a>
+   					<div class="card-body">
+
+   						<h5 class="text-muted card-text">{{ instance.title }}</h5>
+
+    <a href="{{ instance.get_absolute_url }}" class="btn btn-info">Check out</a>
+   					</div>
+   				</div>
+   			</div>
+   			{% endfor %}
+
+   			</div>
+
+   	</div>
+   </section>
+
+
+
+  </div>
+
+
+<div id="mod">
+ <div class ="heading">
+    <h2 style="text-align:left;float:left; color:#fc6868; font-family:Cambria; margin-left:20px;"><b>Actress</b></h2>
+    <a href="{% url 'actress' %}" class="btn btn-danger float-right" role="button" style="margin-right:30px;">View All</a>
+    </div>
+        <br>
+<section class="gallery-block cards-gallery">
+          	<div class="container">
+   		<div class="row">
+            {% for instance in actresslist|slice:":6" %}
+
+                <div class="card mr-5 ml-4" style="width: 18rem;">
+  <a class="lightbox" href='{{ instance.get_absolute_url }} '><img src= {{ instance.bannerImage.url }} class="card-img-top"></a>
+  <div class="card-body">
+    <a href="{{ instance.get_absolute_url }}" class="btn btn-info" style="float: center">{{ instance.name }}</a>
+
+  </div>
+</div>
+
+
+
+   			{% endfor %}
+
+   			</div>
+
+   	</div>
+   </section>
+
+</div>
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color:#247373;height:100px;">
+        <a class="navbar-brand" href="#"><b>Galleries</b></a>
+         <ul class="navbar-nav ml-auto">
+             <li class="nav-item">
+                    <a href="#" class="nav-link"><b>About us</b></a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link"><b>Contact</b></a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link"><b>privacy policy</b></a>
+                </li>
+            </ul>
+    </nav>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+
+</body>
+</html>
+
