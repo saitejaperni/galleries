@@ -25,9 +25,9 @@ MEDIA_URL = '/media/'
 SECRET_KEY = '=tk#mewvz^h+d9avj34=(c4*c%&&*wp)$-=$0-oinv6t*@m-&!'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['cinegalleries.herokuapp.com']
 
 
 # Application definitiongit

@@ -1,1 +1,2 @@
-web: gunicorn galleries.galleries.wsgi
+release: python manage.py migrate
+web: gunicorn galleries.wsgi
